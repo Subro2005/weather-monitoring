@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Weather App (Fake Data)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #6dd5fa, #2980b9);
+      color: #fff;
+      text-align: center;
+      margin: 0;
+      padding: 40px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .weather-box {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+      width: 300px;
+    }
+
+    input {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      width: 70%;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: #fff;
+      color: #2980b9;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #f1f1f1;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌦️ Simple Weather Monitoring App</h1>
+  <div class="weather-box">
+    <input type="text" id="cityInput" placeholder="Enter city name">
+    <br>
+    <button onclick="getWeather()">Submit</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function getWeather() {
+      const city = document.getElementById('cityInput').value.trim();
+      const resultDiv = document.getElementById('result');
+
+      if (!city) {
+        resultDiv.innerHTML = "<p>Please enter a city name!</p>";
+        return;
+      }
+
+      // Generate fake weather data
+      const fakeTemp = (Math.random() * 15 + 15).toFixed(1); // between 15°C and 30°C
+      const conditions = ["Sunny", "Cloudy", "Rainy", "Windy", "Stormy", "Foggy"];
+      const fakeCondition = conditions[Math.floor(Math.random() * conditions.length)];
+      const fakeHumidity = Math.floor(Math.random() * 40 + 40); // 40–80%
+
+      // Show the fake result
+      resultDiv.innerHTML = `
+        <p><strong>City:</strong> ${city}</p>
+        <p><strong>Temperature:</strong> ${fakeTemp}°C</p>
+        <p><strong>Condition:</strong> ${fakeCondition}</p>
+        <p><strong>Humidity:</strong> ${fakeHumidity}%</p>
+      `;
+    }
+  </script>
+</body>
+</html>
